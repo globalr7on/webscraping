@@ -1,12 +1,10 @@
 const cheerio = require('cheerio');
 const request = require('request-promise');
-const fs = require('fs-extra');
-const writeStream1 = fs.createWriteStream('Productos1.csv');
-const writeStream2 = fs.createWriteStream('Productos2.csv');
+//const fs = require('fs-extra');
+//const writeStream1 = fs.createWriteStream('Ofertas.csv');
+//const writeStream2 = fs.createWriteStream('Productos2.csv');
 const fetch = require('node-fetch')
-
 const url = 'https://www.paris.cl/tecnologia/celulares/';
-
 function searchProduct(searchTerm){
     return fetch(`${url}${searchTerm}`)
     .then(response => response.text())
