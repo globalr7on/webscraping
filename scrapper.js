@@ -11,19 +11,18 @@ function searchProduct(searchTerm){
     return fetch(`${url}${searchTerm}`)
     .then(response => response.text())
     .then(body => {
-        const cells = [];
+        const resultados= []
         const $ = cheerio.load(body); 
-        $('.name-product-plp').each(function(i,element){
-            const $element =$(element);
-            const $price = $('.item-price');
-            const cell = {
-                title: $element.text().replace(/[\n\r]/g,' '),
-                price: $price.text().replace(/[\n\r]/g,' '),
+        $('.box-absolute').each(function(i,element){
+            const title =$(element).find('h4');
+            const price =$(element).find('.item-price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
             };
-            //console.log($element.text());
-            cells.push(cell);
+            resultados.push(resultado);
         })
-      return cells;
+        return resultados;
     });
 };         
 module.exports = {
