@@ -8,8 +8,24 @@ app.get('/', (req, res)=> {
     });
 });
 
-app.get('/search/:title', (req, res)=> {
-    scraper.searchProduct(req.params.title)
+app.get('/searchParis/:title', (req, res)=> {
+    scraper.searchParis(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+app.get('/searchRiplay/:title', (req, res)=> {
+    scraper.searchRiplay(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+app.get('/searchFalabella/:title', (req, res)=> {
+    scraper.searchFalabella(req.params.title)
     .then(cells => {
         res.json(cells);
     });
