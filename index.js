@@ -32,6 +32,55 @@ app.get('/searchFalabella/:title', (req, res)=> {
 
 });
 
+app.get('/searchHites/:title', (req, res)=> {
+    scraper.searchHites(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+app.get('/searchCorona/:title', (req, res)=> {
+    scraper.searchCorona(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+
+app.get('/searchLider/:title', (req, res)=> {
+    scraper.searchCorona(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+app.get('/searchEasy/:title', (req, res)=> {
+    scraper.searchEasy(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+app.get('/searchSodimac/:title', (req, res)=> {
+    scraper.searchSodimac(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
+app.get('/searchJumbo/:title', (req, res)=> {
+    scraper.searchJumbo(req.params.title)
+    .then(cells => {
+        res.json(cells);
+    });
+
+});
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> {

@@ -27,7 +27,7 @@ function searchParis(searchTerm){
     });
 };     
 
-const urlRiplay='https://simple.ripley.cl/black-friday/electro/tv?showProducts=true';
+const urlRiplay='https://simple.ripley.cl/black-friday/electro/audio?showProducts=true';
 function searchRiplay(searchTerm){
     return fetch(`${urlRiplay}${searchTerm}`)
     .then(response => response.text())
@@ -66,10 +66,161 @@ function searchFalabella(searchTerm){
         return resultados;
     });
 };         
+
+const urlHites='https://www.hites.com/electro-hogar?sorted==true&orderBy=3';
+function searchHites(searchTerm){
+    return fetch(`${urlHites}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+};  
+
+const urlLapolar='https://www.lapolar.cl/tecnologia/accesorios-computacion/';
+function searchLapolar(searchTerm){
+    return fetch(`${urlLapolar}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+};  
+
+const urlCorona='https://www.corona.cl/tecnologia/tv-y-video/televisores?PS=15';
+function searchCorona(searchTerm){
+    return fetch(`${urlCorona}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+};  
+
+const urlLider='https://www.lider.cl/catalogo/category/Categorías_GM/Electrónica';
+function searchLider(searchTerm){
+    return fetch(`${urlLider}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+};  
+
+
+const urlEasy='https://www.easy.cl/tienda/categoria/electrohogar?cur_page=1&cur_view=grid';
+function searchEasy(searchTerm){
+    return fetch(`${urlEasy}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+}; 
+
+const urlSodimac='https://www.sodimac.cl/sodimac-cl/landing/cat7500054/Terrazas/?cid=bnehom162707';
+function searchSodimac(searchTerm){
+    return fetch(`${urlSodimac}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+}; 
+
+
+const urlJumbo='https://www.jumbo.cl/electro-y-tecnologia';
+function searchJumbo(searchTerm){
+    return fetch(`${urlJumbo}${searchTerm}`)
+    .then(response => response.text())
+    .then(body => {
+        const resultados= []
+        const $ = cheerio.load(body); 
+        $('product-grid').each(function(i,element){
+            const title =$(element).find('.product__content__name');
+            const price =$(element).find('product_content_price');
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        })
+        return resultados;
+    });
+}; 
+
+
 module.exports = {
     searchParis,
     searchRiplay,
-    searchFalabella
+    searchFalabella,
+    searchHites,
+    searchLapolar,
+    searchCorona,
+    searchLider,
+    searchEasy,
+    searchSodimac,
+    searchJumbo
 };
 
 
