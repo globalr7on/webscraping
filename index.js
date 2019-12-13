@@ -15,7 +15,6 @@ app.get('/search/:title', (req, res)=> {
      .then(products => {
         res.json(products);
     });
-
 });
 
 app.get('/searchRiplay/:title', (req, res)=> {
