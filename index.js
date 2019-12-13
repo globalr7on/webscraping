@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const scraper = require('./scrapper')
+const scrapPro = require('./scrapperparis')
 
 app.get('/', (req, res)=> {
     res.json({
@@ -8,42 +9,43 @@ app.get('/', (req, res)=> {
     });
 });
 
-app.get('/searchParis/:title', (req, res)=> {
-    scraper.searchParis(req.params.title)
-    .then(cells => {
-        res.json(cells);
+app.get('/search/:title', (req, res)=> {
+    scrapPro
+     .searchProducts(req.params.title)
+     .then(products => {
+        res.json(products);
     });
 
 });
 
 app.get('/searchRiplay/:title', (req, res)=> {
     scraper.searchRiplay(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });
 
 app.get('/searchFalabella/:title', (req, res)=> {
     scraper.searchFalabella(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });
 
 app.get('/searchHites/:title', (req, res)=> {
     scraper.searchHites(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
-
+    
 });
 
 app.get('/searchCorona/:title', (req, res)=> {
     scraper.searchCorona(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });
@@ -51,32 +53,32 @@ app.get('/searchCorona/:title', (req, res)=> {
 
 app.get('/searchLider/:title', (req, res)=> {
     scraper.searchCorona(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });
 
 app.get('/searchEasy/:title', (req, res)=> {
     scraper.searchEasy(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });
 
 app.get('/searchSodimac/:title', (req, res)=> {
     scraper.searchSodimac(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });
 
 app.get('/searchJumbo/:title', (req, res)=> {
     scraper.searchJumbo(req.params.title)
-    .then(cells => {
-        res.json(cells);
+    .then(resultados => {
+        res.json(resultados);
     });
 
 });

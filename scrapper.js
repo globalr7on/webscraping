@@ -1,13 +1,10 @@
 const cheerio = require('cheerio');
 const request = require('request-promise');
-//const fs = require('fs-extra');
-//const writeStream1 = fs.createWriteStream('Ofertas.csv');
-//const writeStream2 = fs.createWriteStream('Productos2.csv');
+const fs = require('fs-extra');
+//const fs = require('fs');
+
 const fetch = require('node-fetch')
 const urlParis ='https://www.paris.cl/tecnologia/celulares/';
-
-
-
 function searchParis(searchTerm){
     return fetch(`${urlParis}${searchTerm}`)
     .then(response => response.text())
@@ -15,14 +12,21 @@ function searchParis(searchTerm){
         const resultados= []
         const $ = cheerio.load(body); 
         $('.box-absolute').each(function(i,element){
+            const writeStream1 = fs.createWriteStream('Ofertas.csv');
+            const writeStream2 = fs.createWriteStream('Productos2.csv');
             const title =$(element).find('h4');
             const price =$(element).find('.item-price');
+            const writeStream1 = fs.createWriteStream('Ofertas.csv');
+            const writeStream2 = fs.createWriteStream('Productos2.csv');
             const resultado ={
                 title: title.text().replace(/[\n\r]/g,' '),
                 price: price.text().replace(/[\n\r]/g,' '),
             };
             resultados.push(resultado);
         })
+        
+
+
         return resultados;
     });
 };     
@@ -67,16 +71,17 @@ function searchFalabella(searchTerm){
     });
 };         
 
-const urlHites='https://www.hites.com/electro-hogar?sorted==true&orderBy=3';
+const urlHites='https://www.hites.com/celulares/smartphone/smartphone';
+//const fileHites = '/home/vramhdev/Desktop/hites/Notebook\ _\ Hites.html'
 function searchHites(searchTerm){
     return fetch(`${urlHites}${searchTerm}`)
     .then(response => response.text())
     .then(body => {
         const resultados= []
         const $ = cheerio.load(body); 
-        $('product-grid').each(function(i,element){
+        $('.product__link').each(function(i,element){
             const title =$(element).find('.product__content__name');
-            const price =$(element).find('product_content_price');
+            const price =$(element).find('.product__content__prices');
             const resultado ={
                 title: title.text().replace(/[\n\r]/g,' '),
                 price: price.text().replace(/[\n\r]/g,' '),
@@ -85,7 +90,32 @@ function searchHites(searchTerm){
         })
         return resultados;
     });
-};  
+ };     
+
+
+function searchHitesTMP(){
+        const resultados= [];
+        
+        const $ = cheerio.load(fs.readFileSync(fileHites)); 
+        $('a').each(function(i,element){
+            const title =$(element).find('p','.product__content__name');
+            //console.log(title.text());
+            const price =$(element).find('.product__price-block');
+           // console.log(price.text());
+            const resultado ={
+                title: title.text().replace(/[\n\r]/g,' '),
+                price: price.text().replace(/[\n\r]/g,' '),
+            };
+            resultados.push(resultado);
+        });
+        console.dir(resultados);
+    return resultados;
+
+};         
+
+
+
+
 
 const urlLapolar='https://www.lapolar.cl/tecnologia/accesorios-computacion/';
 function searchLapolar(searchTerm){
