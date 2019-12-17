@@ -10,11 +10,9 @@ function searchProducts(searchTerm) {
             const $ = cheerio.load(body);
             $('.product-tile').each(function(i, element){
                 const $element = $(element);
-                //const $image =$element.find('a img');
                 const $title =$element.find('h4');
                 const $price =$element.find('.price');
                 const product = {
-                //    image: $image.attr('src'),
                     title: $title.text().replace(/[\n\r]/g,' '),
                     Price: $price.text().replace(/[\n\r]/g,' '),
                 };
