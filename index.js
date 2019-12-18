@@ -26,7 +26,7 @@ app.get('/search2/:title', (req, res)=> {
     });
 });
 
-app.get('/searchCat/', (req, res)=> {
+app.get('/searchcat/', (req, res)=> {
     scFallabella
      .searchCategory(req.params.title)
      .then(categories => {

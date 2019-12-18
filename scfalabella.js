@@ -2,13 +2,7 @@ const fetch = require('node-fetch');
 const url = 'https://www.falabella.com/falabella-cl/'
 const urlCategory = 'https://www.falabella.com/falabella-cl/'
 
-//jsx-2203476943 jsx-361261853 secondLevelMenuContainer-item
-//jsx-2203476943 jsx-361261853 secondLevelMenuContainer-items
-//SecondLevelItems_displaySubMenuDesktop__33Gpt
-
-
 const cheerio = require('cheerio');
-
 
 function searchCategory(searchTerm) {
     return fetch(`${urlCategory}${searchTerm}`)
@@ -16,11 +10,11 @@ function searchCategory(searchTerm) {
         .then(body => {
             const categories = [];
             const $ = cheerio.load(body);
-            $('.SecondLevelItems_displaySubMenuDesktop__33Gpt').each(function(i, element){
+            $('..jsx-1208619116').each(function(i, element){
                 const $element = $(element);
-                const $nameCat =$element.find('a');
+                const $name =$element.find('a');
                 const category = {
-                    nameCat: $nameCat.text().replace(/[\n\r]/g,' '),
+                    name: $name.text()
                 };
                 categories.push(category);
             });
