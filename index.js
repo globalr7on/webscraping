@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const scraper = require('./scrapper')
-const scrapPro = require('./scrapperparis')
+const scraper = require('./scrapper');
+const scrapPro = require('./scrapperparis');
+const scFallabella = require('./scfalabella');
 
 app.get('/', (req, res)=> {
     res.json({
@@ -16,6 +17,23 @@ app.get('/search/:title', (req, res)=> {
         res.json(products);
     });
 });
+
+app.get('/search2/:title', (req, res)=> {
+    scFallabella
+     .searchProducts(req.params.title)
+     .then(products => {
+        res.json(products);
+    });
+});
+
+app.get('/searchCat/', (req, res)=> {
+    scFallabella
+     .searchCategory(req.params.title)
+     .then(categories => {
+        res.json(categories);
+    });
+});
+
 
 app.get('/searchRiplay/:title', (req, res)=> {
     scraper.searchRiplay(req.params.title)
