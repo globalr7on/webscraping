@@ -1,28 +1,28 @@
 const fetch = require('node-fetch');
-const url = 'https://www.falabella.com/falabella-cl/'
-const urlCategory = 'https://www.falabella.com/falabella-cl/'
-
 const cheerio = require('cheerio');
 
 function searchCategory(searchTerm) {
+    const urlCategory = 'https://www.falabella.com/falabella-cl/'
     return fetch(`${urlCategory}${searchTerm}`)
         .then(response => response.text())
         .then(body => {
             const categories = [];
             const $ = cheerio.load(body);
-            $('..jsx-1208619116').each(function(i, element){
+            $('.ThirdLevelItems_submenuElementLi__n49I5').each(function(i, element){
                 const $element = $(element);
-                const $name =$element.find('a');
+                const $dir =$element.find('a');
                 const category = {
-                    name: $name.text()
+                    title: $dir.text().replace(/[\n\r]/g,' '),
                 };
                 categories.push(category);
             });
+            
             return categories
         });
     }
 
 function searchProducts(searchTerm) {
+    const url = 'https://www.falabella.com/falabella-cl/'
     return fetch(`${url}${searchTerm}`)
         .then(response => response.text())
         .then(body => {
