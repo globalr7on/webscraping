@@ -5,6 +5,8 @@ const scraper = require('./scrapper');
 const scrapPro = require('./scrapperparis');
 const scFallabella = require('./scfalabella');
 const scriplay = require('./scriplay');
+const scpolar = require('./scpolar')
+
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -68,6 +70,16 @@ app.get('/searchRiplay_4/', (req, res)=> {
         res.json(products);
     });
 });
+
+app.get('/searchPolar/', (req, res)=> {
+    scpolar
+     .searchProducts(req.params.title)
+     .then(products => {
+        res.json(products);
+    });
+});
+
+
 
 app.get('/searchRiplay/:title', (req, res)=> {
     scraper.searchRiplay(req.params.title)
