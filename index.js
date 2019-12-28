@@ -72,7 +72,7 @@ app.get('/searchRiplay_4/', (req, res)=> {
     });
 });
 
-app.get('/searchPolar/', (req, res)=> {
+app.get('/searchPolar/:title', (req, res)=> {
     scpolar
      .searchProducts(req.params.title)
      .then(products => {
@@ -88,7 +88,7 @@ app.get('/searchCorona/', (req, res)=> {
     });
 });
 
-
+/*
 app.get('/searchRiplay/:title', (req, res)=> {
     scraper.searchRiplay(req.params.title)
     .then(resultados => {
@@ -145,7 +145,7 @@ app.get('/searchJumbo/:title', (req, res)=> {
     });
 
 });
-
+*/
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> {

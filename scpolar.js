@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const url = 'https://www.lapolar.cl/tecnologia/televisores/smart-tv/'
+const url = 'https://www.lapolar.cl/tecnologia/'
 const cheerio = require('cheerio');
 
 function searchProducts(searchTerm) {
@@ -8,12 +8,12 @@ function searchProducts(searchTerm) {
         .then(body => {
             const products = [];
             const $ = cheerio.load(body);
-            $('a.link.lp-font--barlow.js-trunk').each(function(i, element){
+            $('.tile-body').each(function(i, element){
                 const $element = $(element);
-               // const $title =$element.find('.data-product-name');
-                const $price =$element.find('.prices');
+                const $title =$element.find('a.lp-font--barlow.js-trunk');
+                const $price =$element.find('span.price-value');
                 const product = {
-                 //   title: $title.text().replace(/[\n\r]/g,' '),
+                    title: $title.text().replace(/[\n\r]/g,' '),
                     Price: $price.text().replace(/[\n\r]/g,' '),
                 };
                 products.push(product);
