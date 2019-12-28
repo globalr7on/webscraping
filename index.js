@@ -5,7 +5,8 @@ const scraper = require('./scrapper');
 const scrapPro = require('./scrapperparis');
 const scFallabella = require('./scfalabella');
 const scriplay = require('./scriplay');
-const scpolar = require('./scpolar')
+const scpolar = require('./scpolar');
+const sccorona = require('./sccorona');
 
 
 
@@ -79,6 +80,13 @@ app.get('/searchPolar/', (req, res)=> {
     });
 });
 
+app.get('/searchCorona/', (req, res)=> {
+    sccorona
+     .searchProducts(req.params.title)
+     .then(products => {
+        res.json(products);
+    });
+});
 
 
 app.get('/searchRiplay/:title', (req, res)=> {
@@ -103,14 +111,6 @@ app.get('/searchHites/:title', (req, res)=> {
         res.json(resultados);
     });
     
-});
-
-app.get('/searchCorona/:title', (req, res)=> {
-    scraper.searchCorona(req.params.title)
-    .then(resultados => {
-        res.json(resultados);
-    });
-
 });
 
 
