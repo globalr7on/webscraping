@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 const url = 'https://www.lapolar.cl/tecnologia/'
 const cheerio = require('cheerio');
-
 function searchProducts(searchTerm) {
     return fetch(`${url}${searchTerm}`)
         .then(response => response.text())

@@ -8,10 +8,10 @@ function searchProducts(searchTerm) {
         .then(body => {
             const products = [];
             const $ = cheerio.load(body);
-            $('.col-sm-4.col-xs-12').each(function(i, element){
+            $('div.product').each(function(i, element){
                 const $element = $(element);
                 const $title =$element.find('h4');
-                const $price =$element.find('.bestPrice');
+                const $price =$element.find('span.current.bestPrice');
                 const product = {
                     title: $title.text().replace(/[\n\r]/g,' '),
                     Price: $price.text().replace(/[\n\r]/g,' '),

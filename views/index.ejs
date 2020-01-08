@@ -5,7 +5,7 @@
         <title>
 
         </title>
-        <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+        <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.min.css">
         <style>
             main{
                 margin-top: 2em;
@@ -13,16 +13,56 @@
         </style>
     </head>
     <body>
-        <main class="container">
-            <form>
-                <fieldset class="form-group">
-                    <label for="search">Buscar</label>
-                    <input type="text" class="from-control" id="search" placeholder="Buscar producto">
-                </fieldset>
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </form>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">WebScrapin</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Analitica</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Estadisticas</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar Sitio web">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+              </form>
+            </div>
+          </nav>
+        <div style="text-align: center;">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Imagen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table> 
+        </div>
         </main>
-
     </body>
 </html>

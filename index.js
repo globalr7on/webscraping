@@ -80,7 +80,7 @@ app.get('/searchPolar/:title', (req, res)=> {
     });
 });
 
-app.get('/searchCorona/', (req, res)=> {
+app.get('/searchCorona/:title', (req, res)=> {
     sccorona
      .searchProducts(req.params.title)
      .then(products => {
